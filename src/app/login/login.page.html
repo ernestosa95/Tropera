@@ -1,0 +1,62 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+
+<div class="login-container">
+  <ion-card class="login-card">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Bienvenido a Tropera</ion-card-title>
+      <div class="image-container">
+        <img src="assets/icon/Icono_new.png" alt="Logo de Tropera" class="login-logo">
+      </div>
+      <ion-card-subtitle class="ion-text-center">Por favor, inicia sesión</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full" class="ion-no-padding">
+        <ion-item>
+          
+          <ion-input
+              label="Usuario"
+              labelPlacement="floating"
+              type="text"
+              [(ngModel)]="username"
+              placeholder="Ingresa tu nombre de usuario"
+              aria-label="Campo de usuario">
+          </ion-input>
+
+        </ion-item>
+
+          <ion-item class="ion-margin-top">
+            <ion-input
+              label="Contraseña"
+              labelPlacement="floating"
+              type="password"
+              placeholder="Ingresa tu contraseña"
+              [(ngModel)]="password"
+              aria-label="Campo de contraseña"
+            ></ion-input>
+          </ion-item>
+
+          <ion-button
+          expand="block"
+          class="ion-margin-top"
+          (click)="recuperarDatos()"
+        >
+          Entrar
+          <ion-icon slot="end" name="log-in-outline"></ion-icon>
+        </ion-button>
+
+        <ion-text class="ion-text-center ion-padding-top">
+          <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+        </ion-text>
+
+        
+      </ion-list>
+    </ion-card-content>
+    
+  </ion-card>
+</div>

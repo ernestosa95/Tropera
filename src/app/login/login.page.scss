@@ -1,0 +1,30 @@
+.login-container {
+    display: flex;
+    justify-content: center; // Centra horizontalmente
+    align-items: center;     // Centra verticalmente
+    height: 100%;            // Asegura que ocupe toda la altura del ion-content
+    width: 100%;             // Asegura que ocupe todo el ancho
+    background-color: var(--ion-color-tropera-verde);
+  }
+  
+  .login-card {
+    max-width: 450px; // Ancho máximo de la tarjeta para pantallas grandes
+    width: 90%;      // Ocupa el 90% del ancho en pantallas más pequeñas
+    // Puedes añadir sombras o bordes si quieres:
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    // border-radius: 10px;
+  }
+
+  .image-container {
+    text-align: center; // Centra la imagen si es un elemento inline o inline-block
+    margin-top: 15px;   // Espacio encima de la imagen
+    margin-bottom: 15px; // Espacio debajo de la imagen
+  }
+  
+  .login-logo {
+    max-width: 150px; // Limita el ancho máximo de tu logo (ajustalo según el tamaño de tu imagen)
+    height: auto;     // Mantiene la proporción de la imagen
+    display: block;   // Asegura que ocupe su propio bloque para centrado con margin
+    margin: 0 auto;   // Centra la imagen si es un elemento de bloque
+  }
+  
