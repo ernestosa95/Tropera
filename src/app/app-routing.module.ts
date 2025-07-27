@@ -9,6 +9,26 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'campo-detalle/:id', 
+    loadChildren: () => import('./campo-detalle/campo-detalle.module').then( m => m.CampoDetallePageModule)
+  },
+  {
+    path: 'crear-campo-modal',
+    loadChildren: () => import('./crear-campo-modal/crear-campo-modal.module').then( m => m.CrearCampoModalPageModule)
+  },
+  {
+    path: 'campo-detalle',
+    loadChildren: () => import('./campo-detalle/campo-detalle.module').then( m => m.CampoDetallePageModule)
+  },
+  {
+    path: 'registro-modal',
+    loadChildren: () => import('./registro-modal/registro-modal.module').then( m => m.RegistroModalPageModule)
   }
 ];
 @NgModule({

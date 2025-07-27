@@ -37,26 +37,37 @@
               type="password"
               placeholder="Ingresa tu contraseña"
               [(ngModel)]="password"
-              aria-label="Campo de contraseña"
-            ></ion-input>
+              aria-label="Campo de contraseña">
+            </ion-input>
           </ion-item>
 
           <ion-button
           expand="block"
           class="ion-margin-top"
-          (click)="recuperarDatos()"
-        >
+          (click)="recuperarDatos()">
           Entrar
           <ion-icon slot="end" name="log-in-outline"></ion-icon>
         </ion-button>
 
-        <ion-text class="ion-text-center ion-padding-top">
+        <!--<ion-text class="ion-text-center ion-padding-top">
           <p><a href="#">¿Olvidaste tu contraseña?</a></p>
-        </ion-text>
-
+        </ion-text>-->
+        <ion-button expand="block" fill="clear" class="ion-margin-top" (click)="irARegistro()">
+          Crear Usuario
+        </ion-button>
         
       </ion-list>
     </ion-card-content>
     
   </ion-card>
+
+  <!--<ion-fab vertical="bottom">
+    <ion-fab-button (click)="irARegistro()">
+      <ion-icon name="add-outline"></ion-icon>
+      <ion-label>Crear usuario </ion-label> 
+    </ion-fab-button>
+  </ion-fab>-->
+
+
+
 </div>
