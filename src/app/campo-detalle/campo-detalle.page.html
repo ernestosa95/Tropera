@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button> </ion-buttons>
+    <ion-title>
+      {{ campoActual?.nombre || 'Detalles del Campo' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <ion-card *ngIf="campoActual">
+      <ion-card-header>
+        <ion-card-title>{{ campoActual.nombre }}</ion-card-title>
+        <ion-card-subtitle>ID: {{ campoActual.id }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-icon name="resize-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h3>Hectáreas</h3>
+            <p>{{ campoActual.hectareas }} ha</p>
+          </ion-label>
+        </ion-item>
+
+        <!--<ion-item lines="none">
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h3>Ubicación</h3>
+            <p>{{ campoActual.ubicacion }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-icon name="time-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h3>Última Actualización</h3>
+            <p>{{ campoActual.ultimaActualizacion | date:'medium' }}</p>
+          </ion-label>
+        </ion-item>-->
+
+        </ion-card-content>
+    </ion-card>
+
+    <div *ngIf="!campoActual" class="ion-text-center ion-padding">
+      <p>Cargando detalles del campo o campo no encontrado...</p>
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+  </div>
+</ion-content>

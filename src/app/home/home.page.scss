@@ -1,0 +1,64 @@
+/* src/app/home/home.page.scss */
+
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+
+  .header{
+    background-color: var(--ion-color-tropera-verde);
+  }
+  
+  /* Estilos para el botón fab con texto */
+  ion-fab-button ion-label {
+    display: block; // O inline-block, dependiendo de cómo quieras el layout
+    margin-left: 8px; // Espacio entre el ícono y el texto
+    font-size: 0.9em; // Ajusta el tamaño de la fuente si es necesario
+    font-weight: bold;
+  }
+  
+  ion-fab-button {
+    --border-radius: 28px; /* Hazlo redondo en los bordes, pero no completamente circular */
+    width: auto;           /* Permite que el ancho se ajuste al contenido */
+    min-width: 140px;      /* Establece un ancho mínimo para que el texto quepa */
+    height: 56px;          /* Altura estándar de un FAB */
+    --padding-start: 16px; /* Ajusta el padding interno */
+    --padding-end: 16px;
+    
+    // Aseguramos que el contenido (ícono y label) se alinee correctamente
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    ion-icon {
+      margin-right: 8px; // Espacio entre el ícono y el texto
+      font-size: 24px;   // Tamaño del ícono, puedes ajustarlo
+    }
+  
+    ion-label {
+      display: inline-block; // Asegura que el label sea visible
+      font-size: 16px;       // Tamaño del texto, puedes ajustarlo
+      font-weight: 500;      // Grosor de la fuente
+      // color: var(--ion-color-primary-contrast); // Si quieres un color de texto específico
+    }
+}

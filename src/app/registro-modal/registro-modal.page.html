@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Nueva Cuenta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="formRegistro" (ngSubmit)="guardar()">
+    <ion-item>
+      <ion-input label="Nombre de Usuario" labelPlacement="stacked" placeholder="Ej: usuario123" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Correo Electrónico" labelPlacement="stacked" type="email" placeholder="Ej: tu@ejemplo.com" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Contraseña" labelPlacement="stacked" type="password" placeholder="Mínimo 6 caracteres" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Confirmar Contraseña" labelPlacement="stacked" type="password" placeholder="Repite tu contraseña" formControlName="confirmPassword"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="formRegistro.invalid" class="ion-margin-top">
+      Guardar Usuario
+    </ion-button>
+    <!--<ion-button expand="block" fill="outline" class="ion-margin-top" (click)="cancelar()">
+      Cancelar
+    </ion-button>-->
+  </form>
+</ion-content>

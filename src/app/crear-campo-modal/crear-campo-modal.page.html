@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Nuevo Campo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="formCampo" (ngSubmit)="guardar()">
+    <ion-item>
+      <ion-input label="Nombre del Campo" labelPlacement="stacked" placeholder="Ej: Finca San José" formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Cantidad de Hectáreas" labelPlacement="stacked" type="number" placeholder="Ej: 150.75" formControlName="hectareas"></ion-input>
+    </ion-item>
+    <!--<ion-item>
+      <ion-textarea label="Ubicación (opcional)" labelPlacement="stacked" placeholder="Ej: Ruta 3 km 25"></ion-textarea>
+    </ion-item>-->
+
+    <ion-button expand="block" type="submit" [disabled]="formCampo.invalid" class="ion-margin-top">
+      Guardar Campo
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <!--<h4>¡Hola, {{userName}}!</h4>-->
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Cerrar Sesión
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    
+    <p>Bienvenido a Tropera.</p>
+
+  <ion-list lines="none"> 
+    <ion-item *ngIf="campos.length === 0">
+      <ion-label class="ion-text-center">
+        Aún no tienes campos creados.
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="campos.length === 0">
+      <ion-label class="ion-text-center">
+        ¡Presiona "Crear Campo" para empezar!
+      </ion-label>
+    </ion-item>
+
+    <ion-card *ngFor="let campo of campos">
+      <ion-card-header>
+        <ion-card-title>{{ campo.nombre }}</ion-card-title>
+        <ion-card-subtitle>ID: {{ campo.id }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Hectáreas:</strong> {{ campo.hectareas }} ha</p>
+        <!--<p><strong>Ubicación:</strong> {{ campo.desc }}</p>-->
+        <!--<p><strong>Última Actualización:</strong> {{ campo.ultimaActualizacion | date:'short' }}</p>-->
+        <ion-button expand="block" fill="outline" size="small" (click)="verDetallesCampo(campo.id)">
+          Ver Detalles
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="crearCampo()">
+      <ion-icon name="add-outline"></ion-icon>
+      <ion-label>Crear Campo</ion-label> 
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
