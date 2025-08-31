@@ -1,0 +1,59 @@
+<!-- src/app/ganado-modal/ganado-modal.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ modalTitle }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="formGanado" (ngSubmit)="guardar()">
+    <ion-item>
+      <ion-input 
+        label="Vacas" 
+        labelPlacement="stacked"  
+        type="number" 
+        placeholder="Cantidad de vacas" 
+        formControlName="vacas">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input 
+        label="Toros" 
+        labelPlacement="stacked"  
+        type="number" 
+        placeholder="Cantidad de toros" 
+        formControlName="toros">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input 
+        label="Terneros" 
+        labelPlacement="stacked"  
+        type="number" 
+        placeholder="Cantidad de terneros" 
+        formControlName="terneros">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input 
+        label="Terneras" 
+        labelPlacement="stacked"  
+        type="number" 
+        placeholder="Cantidad de terneras" 
+        formControlName="terneras">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="formGanado.invalid" class="ion-margin-top">
+      Guardar Inventario
+    </ion-button>
+    <ion-button expand="block" fill="outline" class="ion-margin-top" (click)="cancelar()">
+      Cancelar
+    </ion-button>
+  </form>
+</ion-content>
