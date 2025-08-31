@@ -5,6 +5,20 @@
     <ion-title>
       {{ campoActual?.nombre || 'Detalles del Campo' }}
     </ion-title>
+
+    <ion-buttons slot="end">
+      <!-- Botón de Editar -->
+      <ion-button (click)="editarCampo()">
+        <ion-icon name="create-outline"></ion-icon>
+        Editar
+      </ion-button>
+      <!-- Botón de Eliminar -->
+      <ion-button (click)="eliminarCampo()" color="danger">
+        <ion-icon name="trash-outline"></ion-icon>
+        Eliminar
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -43,6 +57,49 @@
 
         </ion-card-content>
     </ion-card>
+
+    <!-- ************************************************************ -->
+    <!-- NUEVA TARJETA: Gestión de Ganado -->
+    <!-- ************************************************************ -->
+    <ion-card class="ion-margin-top" *ngIf="campoActual">
+      <ion-card-header>
+        <ion-card-title>Inventario de Ganado</ion-card-title>
+        <ion-card-subtitle>Cantidades por tipo de animal</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-icon name="caret-forward-outline" slot="start"></ion-icon>
+            <ion-label>Vacas:</ion-label>
+            <ion-text slot="end"><strong>{{ ganadoActual?.vacas ?? 0 }}</strong></ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="caret-forward-outline" slot="start"></ion-icon>
+            <ion-label>Toros:</ion-label>
+            <ion-text slot="end"><strong>{{ ganadoActual?.toros ?? 0 }}</strong></ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="caret-forward-outline" slot="start"></ion-icon>
+            <ion-label>Terneros:</ion-label>
+            <ion-text slot="end"><strong>{{ ganadoActual?.terneros ?? 0 }}</strong></ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="caret-forward-outline" slot="start"></ion-icon>
+            <ion-label>Terneras:</ion-label>
+            <ion-text slot="end"><strong>{{ ganadoActual?.terneras ?? 0 }}</strong></ion-text>
+          </ion-item>
+        </ion-list>
+
+        <ion-button expand="block" fill="outline" class="ion-margin-top" (click)="editarGanado()">
+          <ion-icon name="pencil-outline" slot="start"></ion-icon>
+          Editar Ganado
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+    <!-- ************************************************************ -->
+    <!-- FIN NUEVA TARJETA -->
+    <!-- ************************************************************ -->
 
     <div *ngIf="!campoActual" class="ion-text-center ion-padding">
       <p>Cargando detalles del campo o campo no encontrado...</p>

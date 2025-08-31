@@ -41,9 +41,9 @@ export class HomePage implements OnInit {
 
     // Carga el ID y username del usuario actual desde localStorage
     const userIdString = localStorage.getItem('currentUserId');
-    if (userIdString) {
-      this.currentUserId = parseInt(userIdString, 10);
-    }
+    this.currentUserId = parseInt(userIdString, 10);
+    console.log('current id ' + this.currentUserId)
+  
     this.currentUsername = localStorage.getItem('currentUsername');
 
     if (this.currentUserId === null) {
@@ -54,6 +54,20 @@ export class HomePage implements OnInit {
 
     console.log(`Usuario ${this.currentUsername} (ID: ${this.currentUserId}) logueado.`);
     await this.cargarCamposDelUsuario(); // Carga los campos al iniciar la página
+  }
+
+  // ¡NUEVO MÉTODO DE CICLO DE VIDA PARA RECARGAR DATOS!
+  async ionViewWillEnter() {
+    console.log('ionViewWillEnter: Recargando campos del usuario...');
+    // Asegúrate de que el user_id esté cargado antes de intentar cargar campos
+    const userIdString = localStorage.getItem('currentUserId');
+    if (userIdString) {
+      this.currentUserId = parseInt(userIdString, 10);
+      await this.cargarCamposDelUsuario();
+    } else {
+      console.warn('No hay user_id en localStorage al entrar a Home. Redirigiendo a login.');
+      this.router.navigateByUrl('/login');
+    }
   }
 
   async cargarCamposDelUsuario() {

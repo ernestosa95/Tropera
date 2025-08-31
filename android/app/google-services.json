@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "72150045403",
+    "project_id": "tropera-9e91c",
+    "storage_bucket": "tropera-9e91c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72150045403:android:ead86d9743790b3a4af2fe",
+        "android_client_info": {
+          "package_name": "io.ionic.demo.pg.cap.ng"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72150045403-hat4efaqof2oei7j84caceplig6ccb32.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.demo.pg.cap.ng",
+            "certificate_hash": "a6c17ab8d661a449ff63c153c5c81cdf0d0a33b6"
+          }
+        },
+        {
+          "client_id": "72150045403-adao5osb3hok55hl8igaevve6l7kh62g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChkwb-YfM-0wYk7pHON1p9u0o4Q1qfypQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72150045403-adao5osb3hok55hl8igaevve6l7kh62g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

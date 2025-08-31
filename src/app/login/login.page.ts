@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular'; // Import ToastController
 import { DatabaseService } from '../services/database.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { RegistroModalPage } from '../registro-modal/registro-modal.page';
+import { AuthService } from '../services/auth-service.service'; // Importar el nuevo servicio
+import { getAuth, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth'
 
 @Component({
   selector: 'app-login', // This matches the selector in your HTML
@@ -19,11 +22,18 @@ export class LoginPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private dbService: DatabaseService,
-    private modalCtrl: ModalController 
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
+    private authService: AuthService // Inyectar el servicio de autenticación
   ) { }
 
-  ngOnInit() {
-    // Puedes inicializar algo aquí si es necesario al cargar la página
+  async ngOnInit() {
+    // Espera a que el estado de autenticación de Firebase esté listo.
+    await this.authService.authStateReady;
+    if (this.authService.currentUser) {
+      this.router.navigateByUrl('/home');
+    }
   }
 
   // Método para manejar el clic del botón
@@ -132,6 +142,41 @@ export class LoginPage implements OnInit {
       // this.recuperarDatos();
     } else {
       console.log('Modal de registro cerrado sin guardar.');
+    }
+  }
+
+  async loginWithGoogle() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Iniciando sesión con Google...',
+    });
+    await loading.present();
+
+    try {
+      // Paso crucial: Inicializar Google Auth antes de usarlo.
+      await this.authService.initializeGoogleAuth(); 
+
+      const result = await GoogleAuth.signIn();
+      console.log('resulto googleauth:', result);
+      const idToken = result.authentication.idToken;
+      console.log('idToken:', idToken);
+      
+      const credential = GoogleAuthProvider.credential(idToken);
+      console.log('Credential google:', credential);
+
+      const idDB = await this.authService.signInWithCredentialAndSync(credential);
+      localStorage.setItem('currentUserId', idDB.toString());
+
+      await loading.dismiss();
+      this.router.navigateByUrl('/home');
+    } catch (error) {
+      await loading.dismiss();
+      console.error('Error al iniciar sesión con Google:', error);
+      const alert = await this.alertCtrl.create({
+        header: 'Error de Autenticación',
+        message: 'No se pudo iniciar sesión con Google. Por favor, revisa la configuración de Firebase y Android.',
+        buttons: ['OK']
+      });
+      await alert.present();
     }
   }
 }
